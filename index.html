@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            direction: rtl;
+            direction: ltr;
         }
         #reader {
             width: 300px;
@@ -24,7 +24,7 @@
 </head>
 <body>
 
-    <h2>ماسح الباركود</h2>
+    <h2>Attendance</h2>
     
     <div id="reader"></div>
 
@@ -46,13 +46,12 @@
 
     <br>
 
-    <label for="manualBarcode">أو أدخل الباركود يدويًا:</label>
-    <input type="text" id="manualBarcode" placeholder="أدخل الباركود هنا">
+    <input type="text" id="manualBarcode" placeholder="Or enter the code here">
 
     <br>
 
-    <button onclick="startScanner()">ابدأ المسح</button>
-    <button onclick="submitManually()">تقديم يدويًا</button>
+    <button onclick="startScanner()">Start Scanning</button>
+    <button onclick="submitManually()">Attend with Code</button>
 
     <p id="status"></p>
 
@@ -72,7 +71,7 @@
         // Function to handle barcode scanning success
         function onScanSuccess(decodedText) {
             scanner.clear();
-            document.getElementById("status").innerText = "جاري التحقق...";
+            document.getElementById("status").innerText = "Verifying...";
 
             const attendanceType = document.getElementById("attendanceType").value;
 
@@ -86,11 +85,11 @@
             const attendanceType = document.getElementById("attendanceType").value;
 
             if (!barcode) {
-                document.getElementById("status").innerText = "الرجاء إدخال الباركود!";
+                document.getElementById("status").innerText = "Please enter the barcode!";
                 return;
             }
 
-            document.getElementById("status").innerText = "جاري التحقق...";
+            document.getElementById("status").innerText = "Verifying...";
 
             // Send the barcode and attendance type to the server (Google Apps Script)
             submitData(barcode, attendanceType);
@@ -111,7 +110,7 @@
             })
             .catch(error => {
                 console.error("Error:", error.message);
-                document.getElementById("status").innerText = "حدث خطأ في الاتصال!"; // Display error message
+                document.getElementById("status").innerText = "Connection error occurred!"; // Display error message
             });
         }
     </script>
