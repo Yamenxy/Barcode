@@ -29,28 +29,28 @@
     <div id="reader"></div>
 
     <select id="attendanceType">
-<!--          <option value="الحضور الاول">الحضور الأول</option>  -->
-<!--         <option value="الحضور الثاني">الحضور الثاني</option> -->
-<!--          <option value="الحضور الثالث">الحضور الثالث</option> -->
-<!--         <option value="الحضور الرابع">الحضور الرابع</option> -->
-<!--         <option value="الحضور الخامس">الحضور الخامس</option>
+        <option value="الحضور الاول">الحضور الأول</option> 
+        <option value="الحضور الثاني">الحضور الثاني</option>
+        <option value="الحضور الثالث">الحضور الثالث</option>
+        <option value="الحضور الرابع">الحضور الرابع</option>
+        <option value="الحضور الخامس">الحضور الخامس</option>
         <option value="الحضور السادس">الحضور السادس</option>
         <option value="الحضور السابع">الحضور السابع</option>
         <option value="الحضور الثامن">الحضور الثامن</option>
         <option value="الحضور الشامل">الحضور الشامل</option>
         <option value="الحضور التاسع">الحضور التاسع</option>
         <option value="الحضور العاشر">الحضور العاشر</option>
-        <option value="الحضور الحادي عشر">الحضور الحادي عشر</option>  -->
-<!--          <option value="حضور المراجعة الاولي">حضور المراجعة الاولي</option> 
+        <option value="الحضور الحادي عشر">الحضور الحادي عشر</option> 
+<!--         <option value="حضور المراجعة الاولي">حضور المراجعة الاولي</option> 
         <option value="حضور المراجعة الثانية">حضور المراجعة الثانية</option> 
-        <option value="حضور المراجعة الثالثة">حضور المراجعة الثالثة</option>  -->
-        <option value="حضور المراجعة ليلة الامتحان ">حضور المراجعة ليلة الامتحان </option> 
+        <option value="حضور المراجعة الثالثة">حضور المراجعة الثالثة</option> 
+        <option value="حضور المراجعة ليلة الامتحان ">حضور المراجعة ليلة الامتحان </option>  -->
         <!-- Add more options if needed --> 
     </select>
 
     <br>
 
-    <input type="text" id="manualBarcode" placeholder="Or enter the code here">
+    <input type="text" id="manualBarcode" placeholder="Or enter the code here" maxlength="5" oninput="autoSubmitIfComplete(this)">
 
     <br>
 
@@ -62,6 +62,12 @@
     <script>
         const scriptURL = "https://script.google.com/macros/s/AKfycbzN8Wc9ePh6MYRSnLUM7KZGWzG2qmXy653n1RJdTO7SIM3u5iz2L0v_rkygh4OWf7aogQ/exec";
         let scanner;
+
+               function autoSubmitIfComplete(input) {
+                    if (input.value.length === 5) {
+                    submitManually();
+                    }
+                }
 
         // Function to start scanning the barcode
         function startScanner() {
